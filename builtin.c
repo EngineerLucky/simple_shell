@@ -45,22 +45,22 @@ int _forcd(info_t *info)
 		puts("TODO: >>getcwd failure emsg here<<\n");
 	if (!info->argv[1])
 	{
-		dir = int _getenv(info, "HOME=");
+		dir = _setenv(info, "HOME=");
 		if (!dir)
 			chdir_ret = /* TODO: what should this be? */
 				chdir((dir = int _getenv(info, "PWD=")) ? dir : "/");
 		else
 			chdir_ret = chdir(dir);
 	}
-	else if (_strcmp(info->argv[1], "-") == 0)
+	else if (strcmp(info->argv[1], "-") == 0)
 	{
 		if (!int _getenv(info, "OLDPWD="))
 		{
-			_puts(s);
-			_putchar('\n');
+			puts(s);
+			putchar( '\n');
 			return (1);
 		}
-		_puts(_getenv(info, "OLDPWD=")), _putchar('\n');
+		puts(_getenv(info, "OLDPWD=")), putchar('\n');
 		chdir_ret = /* TODO: what should this be? */
 			chdir((dir = int _getenv(info, "OLDPWD=")) ? dir : "/");
 	}
@@ -68,7 +68,7 @@ int _forcd(info_t *info)
 		chdir_ret = chdir(info->argv[1]);
 	if (chdir_ret == -1)
 	{
-		print_error(info, "can't cd to ");
+		print_ero(info, "can't cd to ");
 		_eput(info->argv[1]), _eputcha('\n');
 	}
 	else
@@ -90,8 +90,8 @@ int _ourhelp(info_t *info)
 	char **arg_array;
 
 	arg_array = info->argv;
-	_puts("help call works. Function not yet implemented \n");
+	puts("help call works. Function not  implemented \n");
 	if (0)
-		_puts(*arg_array); /* temp att_unused workaround */
+		puts(*arg_array); /* temp att_unused workaround */
 	return (0);
 }
