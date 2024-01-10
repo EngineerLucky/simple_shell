@@ -45,7 +45,7 @@ int _setenv(info_t *info)
 {
 	if (info->argc != 3)
 	{
-		_eputs("Incorrect number of arguements\n");
+		_eput("Incorrect number of arguements\n");
 		return (1);
 	}
 	if (_setenv(info, info->argv[1], info->argv[2]))
@@ -86,7 +86,7 @@ int popul_env_list(info_t *info)
 	size_t b;
 
 	for (b = 0; environ[b]; b++)
-		add_node_end(&node, environ[b], 0);
+	add_node_end(&node, environ[b], 0);
 	info->env = node;
 	return (0);
 }
